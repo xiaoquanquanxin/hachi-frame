@@ -1,0 +1,13 @@
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.clear::after {
+    content: '';
+    display: block;
+    clear: both;
+}
