@@ -41,6 +41,9 @@ function removeCookie(name) {
     addCookie(name, 1, -1);
 }
 
+function toJSON(data) {
+    return JSON.parse(JSON.stringify(data));
+}
 
 /**
  * vue的方法
@@ -61,5 +64,6 @@ export {
     getCookie,
     addCookie,
     removeCookie,
+    toJSON,
     vueMethods
 }

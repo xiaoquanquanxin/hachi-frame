@@ -4,14 +4,14 @@
 
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
             <el-menu-item index="1">
-                <router-link to="/user/userhome" name="ad">用户首页</router-link>
+                <router-link :to="{ name:'用户首页', }" name="ad">用户首页</router-link>
             </el-menu-item>
             <el-menu-item index="2">
-                <router-link to="/user/userlist" name="ad">用户列表</router-link>
+                <router-link :to="{ name: '用户列表',  query: { plan: 'private' }}">用户列表</router-link>
             </el-menu-item>
-            <el-menu-item index="3">
-                <router-link to="/user/userinfo" name="ad">用户信息</router-link>
-            </el-menu-item>
+            <!--            <el-menu-item index="3">-->
+            <!--                <router-link :to="{ path: 'userinfo',  query: { userid: 'private' }}">用户信息</router-link>-->
+            <!--            </el-menu-item>-->
             <!--            <el-menu-item index="4">处理中心</el-menu-item>-->
         </el-menu>
         <router-view></router-view>
@@ -23,6 +23,10 @@
         data: () => ({
             activeIndex: 1,
         }),
+        created(){
+            console.log(this.$route)
+            console.log(this.$router)
+        },
         methods: {
             handleSelect(key, val) {
                 console.log(key, val)
