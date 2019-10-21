@@ -78,6 +78,15 @@
         background-color: #dee7f2;
     }
 
+    #container {
+        position: relative;
+    }
+
+    #aside {
+        position: relative;
+        height: 100%;
+    }
+
     #aside > div {
         top: 60px;
         left: 0;
