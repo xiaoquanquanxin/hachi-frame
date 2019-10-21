@@ -2,7 +2,7 @@
     <div>
         <el-page-header @back="goBack" content="详情页面"></el-page-header>
         <el-row>
-            <div v-text="data"></div>
+            <div v-text="JSON.stringify(data)"></div>
         </el-row>
     </div>
 </template>

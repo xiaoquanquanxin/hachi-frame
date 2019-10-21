@@ -20,7 +20,7 @@ const publicPath = '/';
 
 module.exports = {
     entry: {
-        app: resolve(__dirname, __src),
+        app: ['babel-polyfill', resolve(__dirname, __src),],
     },
 
     output: {
@@ -48,7 +48,7 @@ module.exports = {
     // 启用观察 开启了就相当于dev-server了
     watch: false, // boolean，
     externals: {
-        'vue':'Vue',
+        'vue': 'Vue',
         'element-ui': "eui",
     },
     module: {
