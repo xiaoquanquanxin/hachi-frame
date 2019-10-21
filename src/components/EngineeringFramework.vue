@@ -77,4 +77,14 @@
     .el-main {
         background-color: #dee7f2;
     }
+
+    #aside > div {
+        top: 60px;
+        left: 0;
+        bottom: 60px;
+        position: fixed;
+        overflow: hidden;
+        width: 200px;
+        z-index: +10;
+    }
 </style>
