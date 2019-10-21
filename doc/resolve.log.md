@@ -7,3 +7,12 @@
 ####   2.使用了MiniCssExtractPlugin插件不更新
 原因：配置了hmr也不更新，暂时避免它。    
 解决方案：仅在prod里使用它，这是避免了它热更新不来。    
+
+
+####    3.ie兼容性
+原因：ie不支持promise。        
+解决方案：使用babel-polyfill垫片。        
+
+####    4.windows平台兼容性
+原因：windows系统不支持NODE_ENV=development。    
+解决方案：使用cross-env插件。     

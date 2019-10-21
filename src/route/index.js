@@ -6,7 +6,7 @@ import Welcome from "@aliasComponents/Welcome/Welcome.vue";
 //  工具包
 import {getCookie} from '@aliasAssets/js/utils.js';
 
-//  登陆页
+//  登录页
 import Login from '@aliasComponents/Login.vue';
 
 //  用户模块
@@ -41,11 +41,11 @@ const router = new Router({
             component: User,
             name: '用户管理',
             children: [
-                {path: '/user/userhome', component: UserHome, name: '用户首页'},
-                {path: '/user/userlist', component: UserList, name: '用户列表'},
-                {path: '/user/userinfo', component: UserInfo, name: '用户信息'},
-                {path: '/user/userinfo/:userid', component: UserInfo, name: '某一个人的用户信息，传了个userid'},
-                {path: '/user/*', redirect: '/user/userhome'},
+                {path: 'userhome', component: UserHome, name: '用户首页'},
+                {path: 'userlist', component: UserList, name: '用户列表'},
+                {path: 'userinfo', component: UserInfo, name: '用户信息'},
+                {path: 'userinfo/:userid', component: UserInfo, name: '某一个人的用户信息，传了个userid'},
+                {path: '*', redirect: '/user/userhome'},
             ]
         },
         {
@@ -58,13 +58,13 @@ const router = new Router({
 });
 
 
-//  如果用户没有登陆，而点击其他页，则走了两次路由守卫
+//  如果用户没有登录，而点击其他页，则走了两次路由守卫
 router.beforeEach((to, from, next) => {
-    // console.log('开始页面切换');
+    console.log('开始页面切换');
     // console.log(to.fullPath);
     const tempId = getCookie('my-cookie');
     const userInfo = sessionStorage.getItem('ssm_u_info');
-    console.log('主守卫');
+    console.log('主守卫', this);
     if (to.fullPath !== '/login' && (tempId == null || tempId === '' || userInfo == null || userInfo === '')) {
         if (!Boolean(tempId)) {
             console.error(`tempId : ${tempId}`);

@@ -7,7 +7,7 @@
     </div>
 </template>
 <script>
-    import {vueMethods} from "@aliasAssets/js/utils";
+    import {vueMethods, toJSON} from "@aliasAssets/js/utils";
 
     export default {
         name: "UserList",
@@ -20,6 +20,7 @@
             // console.log(to);
             // console.log(from);
             // console.log(next);
+            // console.log(toJSON(this.$route.params));
             next();
             this.data = this.$route.params;
         },

@@ -47,7 +47,7 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        console.log('登陆成功');
+                        console.log('登录成功');
                         addCookie('my-cookie', '1', 86400000);
                         sessionStorage.setItem('ssm_u_info', 'sessionStorage的信息');
                         console.log(getCookie('my-cookie'));
@@ -81,7 +81,7 @@
         margin: auto;
     }
 
-    /*登陆的wrap*/
+    /*登录的wrap*/
     .login-wrap {
         background-color: #fff;
         height: 340px;
