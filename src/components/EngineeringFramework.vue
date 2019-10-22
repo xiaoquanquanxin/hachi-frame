@@ -85,15 +85,30 @@
     #aside {
         position: relative;
         height: 100%;
+        float: left\0;
     }
 
     #aside > div {
-        top: 60px;
+        top: 0;
         left: 0;
-        bottom: 60px;
-        position: fixed;
+        bottom: 0;
+        position: absolute;
         overflow: hidden;
         width: 200px;
         z-index: +10;
     }
+
+    #main {
+        height: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        /*margin-left: 200px\0;*/
+    }
+
+    #header > div {
+        height: 60px;
+    }
+
 </style>
