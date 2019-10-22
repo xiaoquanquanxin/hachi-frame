@@ -1,0 +1,10 @@
+/*重置css*/
+@import "~@aliasAssets/style/reset.css";
+/*颜色配置*/
+@import "~@aliasAssets/style/colorConfig.css";
+
+/*路由*/
+.router-link-active, .el-menu--horizontal > .el-menu-item a.router-link-active, .el-menu--horizontal > .el-menu-item a.router-link-active:hover {
+    color: var(--route-link);
+}
+
