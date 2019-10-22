@@ -9,7 +9,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 //  处理*.vue文件
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
+//  白屏加载loading
+const AppLoadingPage = require('./customPlugins/AppLoadingPage');
 
 //  src的位置
 const __src = '../src';
@@ -112,7 +113,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: `index.html`,      //  达成的包，最后在/page下
             template: resolve(__dirname, '../src/index.html'),                     //  模板来自于/template
-            // chunks: '[chunckname]',
+            title: '自定义的title',
+            style: AppLoadingPage.styleString,
+            appLoading: AppLoadingPage.htmlString,
         }),
 
         new VueLoaderPlugin({}),
