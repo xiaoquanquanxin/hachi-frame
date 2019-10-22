@@ -39,9 +39,10 @@
             }
         }),
         mounted() {
-            document.getElementById('header').style.display = 'none';
-            document.getElementById('aside').style.display = 'none';
-            document.getElementById('footer').style.display = 'none';
+            //  这几个，在login-el-main设置为position：fixed下就不需要了
+            // document.getElementById('header').style.display = 'none';
+            // document.getElementById('aside').style.display = 'none';
+            // document.getElementById('footer').style.display = 'none';
         },
         methods: {
             submitForm(formName) {
@@ -71,7 +72,7 @@
         overflow: hidden;
         background-repeat: no-repeat;
         background-size: cover;
-        position: absolute;
+        position: fixed;
         z-index: +100;
         padding: 0;
         top: 0;
