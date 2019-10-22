@@ -10,13 +10,19 @@
                 </template>
                 <el-menu-item-group>
                     <el-menu-item index="/">
-                        <i class="el-icon-location"></i>去首页
+                        <router-link to="/" exact>
+                            <i class="el-icon-location"></i>去首页
+                        </router-link>
                     </el-menu-item>
                     <el-menu-item index="/aaa" router="true">
-                        <i class="el-icon-location"></i>去aaa
+                        <router-link to="/aaa">
+                            <i class="el-icon-location"></i>去aaa
+                        </router-link>
                     </el-menu-item>
                     <el-menu-item index="/user/">
-                        <i class="el-icon-location"></i>去user
+                        <router-link to="/user/">
+                            <i class="el-icon-location"></i>去user
+                        </router-link>
                     </el-menu-item>
                 </el-menu-item-group>
             </el-submenu>

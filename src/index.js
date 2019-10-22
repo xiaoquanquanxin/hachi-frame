@@ -4,7 +4,6 @@
 Vue.config.productionTip = false;
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css';
-import '@aliasAssets/style/theme/index.css';
 import store from './store'
 import router from './route/index';
 // import elementUI from 'element-ui'

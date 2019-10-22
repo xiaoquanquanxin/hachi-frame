@@ -25,15 +25,7 @@ const WebpackDevelopmentConfiguration = merge(WebpackCommon, {
             {
                 test: /\.css$/,
                 use: [
-                    'vue-style-loader',
-                    //  这玩意儿dev不更新的
-                    // {
-                    //     loader: MiniCssExtractPlugin.loader,
-                    //     options: {
-                    //         //  开发环境配置热更新
-                    //         hmr: ENV === 'development',
-                    //     }
-                    // },
+                    {loader: 'vue-style-loader'},
                     {loader: 'css-loader', options: {importLoaders: 2,}},
                     {
                         loader: 'postcss-loader',

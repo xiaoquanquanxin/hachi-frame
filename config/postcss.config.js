@@ -1,12 +1,19 @@
 const __src = '../src';
 const {resolve} = require('path');
-console.log('加载了postcss🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉');
+console.log('加载了postcss🍊🍊🍊🍊🍊🍊🍊🍊');
 const postCssConfig = {
     sourceMap: true,
     ident: 'postcss',
     plugins: [
+        require('postcss-import')({
+            resolve(_path) {
+                console.log( `postcss路径：🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉🍉${_path}`);
+                _path = _path.replace('~@aliasAssets', resolve(__dirname, `${__src}/assets`));
+                return _path;
+            }
+        }),
         require("postcss-preset-env")({
-            stage: 0,
+            stage: -1,
             autoprefixer: {
                 //  主要是android和ios的版本，别改这里
                 overrideBrowserslist: [
