@@ -6,7 +6,7 @@ import UserInfoModule from "./UserInfoModule";
 
 export default new Vuex.Store({
     state: {count: '全局的数据'},
-
+    strict: true,
     modules: {
         UserInfoModule,
     }
