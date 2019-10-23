@@ -102,7 +102,7 @@ module.exports = {
         alias: {
             "@aliasComponents": resolve(__dirname, `${__src}/components`),
             "@aliasAssets": resolve(__dirname, `${__src}/assets`),
-            '@aliasCss': resolve(__dirname, `${__src}/css`),
+            '@aliasConfig': resolve(__dirname,),
         },
     },
     plugins: [

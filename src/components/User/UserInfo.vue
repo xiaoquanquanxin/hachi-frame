@@ -5,8 +5,8 @@
             <div v-text="JSON.stringify(data)"></div>
         </el-row>
         <el-row>
-            <el-button @click="incrementIfOddOnRootSum(333)">增加333</el-button>
-            <el-button @click="abc(333333)">增加333</el-button>
+            <el-button @click="incrementIfOddOnRootSum(10)">增加10</el-button>
+            <el-button @click="abc(1000)">abcclick</el-button>
             <p v-text="getCount"></p>
             <hr>
             <p v-text="doubleVal"></p>
