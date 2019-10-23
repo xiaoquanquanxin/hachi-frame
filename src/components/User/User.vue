@@ -24,8 +24,8 @@
             activeIndex: 1,
         }),
         created(){
-            console.log(this.$route)
-            console.log(this.$router)
+            // console.log(this.$route)
+            // console.log(this.$router)
         },
         methods: {
             handleSelect(key, val) {
