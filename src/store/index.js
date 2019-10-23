@@ -1,15 +1,13 @@
-// import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
+//  用户信息模块的数据
+import UserInfoModule from "./UserInfoModule";
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+    state: {count: '全局的数据'},
+
+    modules: {
+        UserInfoModule,
+    }
+});

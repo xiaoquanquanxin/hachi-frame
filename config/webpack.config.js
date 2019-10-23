@@ -113,7 +113,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: `index.html`,      //  达成的包，最后在/page下
             template: resolve(__dirname, '../src/index.html'),                     //  模板来自于/template
-            title: '自定义的title',
+            title: '欢迎使用hachi IOT',
             style: AppLoadingPage.styleString,
             appLoading: AppLoadingPage.htmlString,
         }),
