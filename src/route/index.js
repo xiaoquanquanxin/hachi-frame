@@ -16,6 +16,8 @@ import UserList from '@aliasComponents/User/UserList.vue';
 import UserHome from '@aliasComponents/User/UserHome.vue';
 
 import AAA from "@aliasComponents/AAA.vue";
+//  左面菜单栏
+import Aside from "@aliasComponents/Aside/Aside.vue";
 
 //  编辑登录信息
 import EditLogin from '@aliasComponents/Login/EditLogin.vue';
@@ -30,22 +32,34 @@ const router = new Router({
         {
             path: '/',
             name: '首页',
-            component: Welcome,
+            components: {
+                default: Welcome,
+                aside: Aside,
+            },
         },
         {
             path: '/login',
             name: '登录',
-            component: Login
+            components: {
+                default: Login,
+                aside: Aside,
+            },
         },
         {
             path: '/aaa',
             name: 'aaa页面',
-            component: AAA
+            components: {
+                default: AAA,
+                aside: Aside,
+            },
         },
         {
             path: '/user',
-            component: User,
             name: '用户管理',
+            components: {
+                default: User,
+                aside: Aside,
+            },
             children: [
                 {path: 'userhome', component: UserHome, name: '用户首页'},
                 {path: 'userlist', component: UserList, name: '用户列表'},
@@ -54,43 +68,53 @@ const router = new Router({
                     path: 'userinfo/:userid', component: UserInfo, name: '某一个人的用户信息，传了个userid',
                     beforeEnter: (to, from, next) => {
                         //  这里最好校验session
-                        new Promise(function (resolve, reject) {
+                        new Promise((resolve, reject) => {
                             const timeOut = Math.random() * 2;
-                            setTimeout(function () {
+                            setTimeout(() => {
                                 if (timeOut < 1) {
                                     resolve(timeOut);
                                 } else {
                                     reject('timeout in ' + timeOut + ' seconds.');
                                 }
-                            }, timeOut * 1000);
+                            }, 300);
                         }).then(function (_t) {
                             console.log(_t, '有权限');
                             next();
                         }).catch(function (reason) {
                             console.log(reason, '没有权限');
                             alert("你没有权限");
+                            router.push(from.fullPath);
                         });
                     }
                 },
                 {path: '*', redirect: '/user/userhome'},
-            ]
+            ],
         },
         {
             name: '编辑登录信息',
             path: '/editLogin',
-            component: EditLogin,
+            components: {
+                default: EditLogin,
+                aside: Aside,
+            },
         },
         {
             name: '历史记录',
             path: '/history',
-            component: HistoryModule,
+            components: {
+                default: HistoryModule,
+                aside: Aside,
+            },
         },
 
         {
             path: '*',
-            component: Welcome,
             redirect: '/',
             name: '重定向',
+            components: {
+                default: Welcome,
+                aside: Aside,
+            },
         }
     ]
 });
