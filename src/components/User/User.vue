@@ -1,7 +1,6 @@
 <template>
     <div>
         <h4>这里是用户模块，下面的都是用户模块的总视图</h4>
-
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
             <el-menu-item index="1">
                 <router-link :to="{ name:'用户首页', }" name="ad">用户首页</router-link>

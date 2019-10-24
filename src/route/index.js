@@ -18,11 +18,14 @@ import UserHome from '@aliasComponents/User/UserHome.vue';
 import AAA from "@aliasComponents/AAA.vue";
 
 //  编辑登录信息
-import EditLogin from '@aliasComponents/Login/EditLogin.vue'
+import EditLogin from '@aliasComponents/Login/EditLogin.vue';
+
+//  历史记录
+import HistoryModule from '@aliasComponents/EXAMPLE/HistoryModule/HistoryModule.vue';
 
 Vue.use(Router);
 const router = new Router({
-    // mode: 'history',     //  需要linux配合设置一些东西
+    mode: 'hash',     //  需要linux配合设置一些东西
     routes: [
         {
             path: '/',
@@ -63,6 +66,11 @@ const router = new Router({
             path: '/editLogin',
             component: EditLogin,
         },
+        {
+            name: '历史记录',
+            path: '/history',
+            component: HistoryModule,
+        },
 
         {
             path: '*',
@@ -92,12 +100,8 @@ router.beforeEach((to, from, next) => {
     }
     next();
 });
-
-
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
     return originalPush.call(this, location).catch(err => err)
 };
-
-
-export default router
+export default router;
