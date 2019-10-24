@@ -19,11 +19,7 @@
                             <i class="el-icon-location"></i>去aaa
                         </router-link>
                     </el-menu-item>
-                    <el-menu-item index="/user/">
-                        <router-link to="/user/">
-                            <i class="el-icon-location"></i>去user
-                        </router-link>
-                    </el-menu-item>
+
                 </el-menu-item-group>
             </el-submenu>
             <el-submenu index="2">
@@ -32,6 +28,11 @@
                     <span slot="title">导航二</span>
                 </template>
                 <el-menu-item-group>
+                    <el-menu-item index="/user/">
+                        <router-link to="/user/">
+                            <i class="el-icon-location"></i>去user
+                        </router-link>
+                    </el-menu-item>
                     <el-menu-item index="2-1">
                         <router-link to="/user/userinfo/32" name="ad">
                             <i class="el-icon-location"></i>直接去userID===32的那个地方去
@@ -102,6 +103,8 @@
                 console.log(key, keyPath);
             },
             getDefaultActive() {
+                console.log(this.$route.path);
+                console.log(location.href);
                 const arr = this.$route.path.split('/');
                 //  如果是二级路由等
                 if (arr.length > 2) {

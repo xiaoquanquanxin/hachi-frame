@@ -6,7 +6,7 @@
             </el-header>
             <el-container id="container" :style="{height:containerInnerHeight}">
                 <el-aside width="200px" id="aside">
-                    <Aside></Aside>
+                    <router-view name="aside"></router-view>
                 </el-aside>
                 <!-- 路由匹配到的组件将渲染在这里 -->
 
@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-    import Aside from "@aliasComponents/Aside/Aside.vue";
+    // import Aside from "@aliasComponents/Aside/Aside.vue";
     import Header from "@aliasComponents/Header/Header.vue";
 
     import {vueMethods} from "@aliasAssets/js/utils";
@@ -52,7 +52,7 @@
             ...vueMethods,
         },
         components: {
-            Aside,
+            // Aside,
             Header,
         }
     }
@@ -80,7 +80,7 @@
     #aside {
         position: relative;
         height: 100%;
-        float: left \0;
+        float: left;
     }
 
     #aside > div {
