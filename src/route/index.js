@@ -52,11 +52,25 @@ const router = new Router({
                 {path: 'userinfo', component: UserInfo, name: '用户信息'},
                 {
                     path: 'userinfo/:userid', component: UserInfo, name: '某一个人的用户信息，传了个userid',
-                    // beforeEnter: (to, from, next) => {
-                    //     console.log(to.fullPath);
-                    //     console.log(from.fullPath);
-                    //     console.log(next);
-                    // }
+                    beforeEnter: (to, from, next) => {
+                        //  这里最好校验session
+                        new Promise(function (resolve, reject) {
+                            const timeOut = Math.random() * 2;
+                            setTimeout(function () {
+                                if (timeOut < 1) {
+                                    resolve(timeOut);
+                                } else {
+                                    reject('timeout in ' + timeOut + ' seconds.');
+                                }
+                            }, timeOut * 1000);
+                        }).then(function (_t) {
+                            console.log(_t, '有权限');
+                            next();
+                        }).catch(function (reason) {
+                            console.log(reason, '没有权限');
+                            alert("你没有权限");
+                        });
+                    }
                 },
                 {path: '*', redirect: '/user/userhome'},
             ]

@@ -84,10 +84,10 @@
 <script>
     export default {
         name: "Aside",
-        created() {
-            console.log(this.defaultActive);
-            // console.log(`/${this.$route.path.split('/')[1]}`);
-        },
+        // created() {
+        //     console.log(this.defaultActive);
+        //     // console.log(`/${this.$route.path.split('/')[1]}`);
+        // },
         data() {
             return {
                 isCollapse: false,
