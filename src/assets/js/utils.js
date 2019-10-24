@@ -58,6 +58,9 @@ function toJSON(data) {
 const vueMethods = {
     goBack() {
         window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+    },
+    treeShakingTestFn() {
+        console.log('treeShakingTestFn');
     }
 };
 export {
