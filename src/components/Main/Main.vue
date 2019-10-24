@@ -42,9 +42,7 @@
     export default {
         name: "Main",
         methods: {
-            goBack() {
-                window.console.log(this);
-            }
+
         },
         components: {
             ButtonGroups,

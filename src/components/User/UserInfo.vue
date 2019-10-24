@@ -53,9 +53,7 @@
             this.data = this.$route.params;
         },
         methods: {
-            goBack() {
-                vueMethods.goBack.call(this);
-            },
+            ...vueMethods,
             ...mapActions('UserInfoModule', ['incrementIfOddOnRootSum']),
             abc(params) {
                 console.log(this.$store.dispatch('UserInfoModule/incrementIfOddOnRootSum', params));

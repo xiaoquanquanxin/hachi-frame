@@ -31,8 +31,6 @@
             containerInnerHeight: 0,
         }),
         created() {
-            console.log(`this.goBack------------  ${this.goBack}`);
-
             this.containerHeightReset();
             const ResizeTimeout = 1000 / 60;
             let isResized = false;
@@ -51,15 +49,12 @@
             containerHeightReset() {
                 this.containerInnerHeight = `${window.innerHeight - 60 - 60}px`;
             },
-            goBack() {
-                vueMethods.goBack.call(this);
-            }
+            ...vueMethods,
         },
         components: {
             Aside,
             Header,
         }
-
     }
 </script>
 <style scoped>
@@ -85,7 +80,7 @@
     #aside {
         position: relative;
         height: 100%;
-        float: left\0;
+        float: left \0;
     }
 
     #aside > div {

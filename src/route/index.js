@@ -7,7 +7,7 @@ import Welcome from "@aliasComponents/Welcome/Welcome.vue";
 import {getCookie} from '@aliasAssets/js/utils.js';
 
 //  登录页
-import Login from '@aliasComponents/Login.vue';
+import Login from '@aliasComponents/Login/Login.vue';
 
 //  用户模块
 import User from '@aliasComponents/User/User.vue'
@@ -16,6 +16,9 @@ import UserList from '@aliasComponents/User/UserList.vue';
 import UserHome from '@aliasComponents/User/UserHome.vue';
 
 import AAA from "@aliasComponents/AAA.vue";
+
+//  编辑登录信息
+import EditLogin from '@aliasComponents/Login/EditLogin.vue'
 
 Vue.use(Router);
 const router = new Router({
@@ -55,6 +58,12 @@ const router = new Router({
                 {path: '*', redirect: '/user/userhome'},
             ]
         },
+        {
+            name: '编辑登录信息',
+            path: '/editLogin',
+            component: EditLogin,
+        },
+
         {
             path: '*',
             component: Welcome,
