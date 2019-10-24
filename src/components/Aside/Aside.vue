@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-menu default-active="/" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+        <el-menu :default-active="defaultActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                  router="true"
         >
             <el-submenu index="1">
@@ -41,9 +41,10 @@
                         <a href="https://element.eleme.cn/#/zh-CN/component/icon" target="_blank">
                             <i class="el-icon-location"></i>图标</a>
                     </el-menu-item>
-                    <el-menu-item index="2-3">
-                        <i class="el-icon-location"></i>
-                        选项3
+                    <el-menu-item index="/history">
+                        <router-link to="/history">
+                            <i class="el-icon-location"></i>去history
+                        </router-link>
                     </el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
@@ -83,10 +84,14 @@
 <script>
     export default {
         name: "Aside",
+        created() {
+            console.log(this.defaultActive);
+            // console.log(`/${this.$route.path.split('/')[1]}`);
+        },
         data() {
             return {
                 isCollapse: false,
-                // defaultActive: document.querySelector('.el-menu-vertical-demo'),
+                defaultActive: this.getDefaultActive(),
             };
         },
         methods: {
@@ -96,9 +101,14 @@
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
-            submenuClick(e) {
-                console.log(e);
-
+            getDefaultActive() {
+                const arr = this.$route.path.split('/');
+                //  如果是二级路由等
+                if (arr.length > 2) {
+                    return `/${arr[1]}/`;
+                }
+                //  说明是一级路由
+                return `/${arr[1]}`;
             }
         }
     }

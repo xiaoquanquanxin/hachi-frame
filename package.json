@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development --config ./config/webpack.development.js",
     "prod": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.production.js",
     "dev:server": "cross-env NODE_ENV=development webpack-dev-server --mode development --config ./config/webpack.devServer.js",
-    "dev:server:other": "cross-env NODE_ENV=development webpack-dev-server --mode development --config ./config/webpack.other.js"
+    "dev:server:other": "cross-env NODE_ENV=development webpack-dev-server --mode development --config ./config/webpack.other.js",
+    "test": "chai --config test/index.js"
   },
   "keywords": [],
   "author": "",

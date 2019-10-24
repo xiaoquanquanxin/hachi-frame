@@ -83,7 +83,7 @@
                     return callback(new Error('年龄不能为空'));
                 }
                 setTimeout(() => {
-                    if (!Number.isInteger(value)) {
+                    if (!Number.isInteger(Number(value))) {
                         callback(new Error('请输入数字值'));
                     } else {
                         if (value < 18) {
