@@ -48,6 +48,8 @@ const router = new Router({
         {
             path: '/aaa',
             name: 'aaa页面',
+            //  别名
+            alias: '/alias',
             components: {
                 default: AAA,
                 aside: Aside,
@@ -63,15 +65,21 @@ const router = new Router({
             children: [
                 {path: 'userhome', component: UserHome, name: '用户首页'},
                 {path: 'userlist', component: UserList, name: '用户列表'},
-                {path: 'userinfo', component: UserInfo, name: '用户信息'},
+                // {path: 'userinfo', component: UserInfo, name: '用户信息'},
                 {
-                    path: 'userinfo/:userid', component: UserInfo, name: '某一个人的用户信息，传了个userid',
+                    path: 'userinfo',
+                    component: UserInfo,
+                    name: '某一个人的用户信息，传了个userid',
+                    props: (route) => {
+                        return {customQueryName: route.query.userid, customParams: 123};
+                    },
                     beforeEnter: (to, from, next) => {
+                        //  这个路由是admin特权查看的，别人进不来
                         //  这里最好校验session
                         new Promise((resolve, reject) => {
                             const timeOut = Math.random() * 2;
                             setTimeout(() => {
-                                if (timeOut < 1) {
+                                if (timeOut < 1.6) {
                                     resolve(timeOut);
                                 } else {
                                     reject('timeout in ' + timeOut + ' seconds.');
