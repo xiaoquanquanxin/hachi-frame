@@ -124,7 +124,7 @@
                 rows.splice(index, 1);
             },
             editRow(index, rows) {
-                this.$router.push(`/user/userinfo/${index}`);
+                this.$router.push(`/user/userinfo?userid=${index}`);
             }
         },
     }

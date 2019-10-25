@@ -17,6 +17,7 @@
     //  工具包了里的方法
     import {vueMethods, toJSON} from "@aliasAssets/js/utils";
 
+    console.log(vueMethods);
     import {
         //  vuex暴露的mapState，用于处理computed
         mapState,
@@ -49,7 +50,10 @@
         data: () => ({
             data: null,
         }),
+        props: ['customQueryName', 'customParams'],
         created() {
+            console.log('customQueryName', this.customQueryName);
+            console.log('customParams', this.customParams);
             this.data = this.$route.params;
         },
         methods: {
