@@ -24,7 +24,7 @@
     </el-form>
 </template>
 <script>
-    import {vueMethods} from '@aliasAssets/js/utils';
+    import {goBack} from '@aliasAssets/js/utils';
 
     import {
         mapGetters,
@@ -116,7 +116,7 @@
 
             ...mapActions('EditLoginModule', ['setEditLogin']),
 
-            ...vueMethods,
+            ...{goBack},
         }
     }
 </script>

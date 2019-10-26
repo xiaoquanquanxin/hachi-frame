@@ -19,10 +19,8 @@
     </div>
 </template>
 <script>
-    // import Aside from "@aliasComponents/Aside/Aside.vue";
     import Header from "@aliasComponents/Header/Header.vue";
 
-    import {vueMethods} from "@aliasAssets/js/utils";
 
     export default {
         //  工程框架，最外面的框架
@@ -49,10 +47,8 @@
             containerHeightReset() {
                 this.containerInnerHeight = `${window.innerHeight - 60 - 60}px`;
             },
-            ...vueMethods,
         },
         components: {
-            // Aside,
             Header,
         }
     }
