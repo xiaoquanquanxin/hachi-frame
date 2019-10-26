@@ -4,7 +4,7 @@
 import Router from 'vue-router';
 import Welcome from "@aliasComponents/Welcome/Welcome.vue";
 //  工具包
-import {getCookie} from '@aliasAssets/js/utils.js';
+import {isUserLogin} from '@aliasAssets/js/utils.js';
 
 //  登录页
 import Login from '@aliasComponents/Login/Login.vue';
@@ -28,6 +28,7 @@ import HistoryModule from '@aliasComponents/EXAMPLE/HistoryModule/HistoryModule.
 Vue.use(Router);
 const router = new Router({
     mode: 'hash',     //  需要linux配合设置一些东西
+    fallback: false,        //  设置为false，ie9会强制刷新页面，但需要服务端渲染配合，不建议使用false
     routes: [
         {
             path: '/',
@@ -70,16 +71,19 @@ const router = new Router({
                     path: 'userinfo',
                     component: UserInfo,
                     name: '某一个人的用户信息，传了个userid',
+                    meta: {requiresAuth: true},
                     props: (route) => {
                         return {customQueryName: route.query.userid, customParams: 123};
                     },
                     beforeEnter: (to, from, next) => {
+                        console.log(to)
+
                         //  这个路由是admin特权查看的，别人进不来
                         //  这里最好校验session
                         new Promise((resolve, reject) => {
                             const timeOut = Math.random() * 2;
                             setTimeout(() => {
-                                if (timeOut < 1.6) {
+                                if (timeOut < 11.6) {
                                     resolve(timeOut);
                                 } else {
                                     reject('timeout in ' + timeOut + ' seconds.');
@@ -130,19 +134,20 @@ const router = new Router({
 
 //  如果用户没有登录，而点击其他页，则走了两次路由守卫
 router.beforeEach((to, from, next) => {
-    // console.log(to.fullPath);
-    const tempId = getCookie('my-cookie');
-    const userInfo = sessionStorage.getItem('ssm_u_info');
     console.log('主守卫被调用');
-    if (to.fullPath !== '/login' && (tempId == null || tempId === '' || userInfo == null || userInfo === '')) {
-        if (!Boolean(tempId)) {
-            console.error(`tempId : ${tempId}`);
+    if (to.fullPath === '/login') {
+        next();
+        return;
+    }
+    //  如果用户需要登录
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        console.log(`需要验证登录的path : ${to.fullPath}`);
+        //  用户没有登录
+        if (!isUserLogin()) {
+            //  用户没登录，就跳转到登录页
+            router.push({path: '/login'});
+            return;
         }
-        if (!Boolean(userInfo)) {
-            console.error(`tempId : ${userInfo}`);
-        }
-        router.push({path: '/login'});
-        return
     }
     next();
 });

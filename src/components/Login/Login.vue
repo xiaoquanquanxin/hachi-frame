@@ -20,9 +20,13 @@
     </el-main>
 </template>
 <script>
-    import {getCookie, addCookie} from '@aliasAssets/js/utils';
 
     import bg from '@aliasAssets/images/bg.jpg';
+
+    import {
+        mapGetters,
+        mapActions
+    } from 'vuex';
 
     console.log(`url(${(bg)})`);
 
@@ -49,9 +53,8 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         console.log('登录成功');
-                        addCookie('my-cookie', '1', 86400000);
-                        sessionStorage.setItem('ssm_u_info', 'sessionStorage的信息');
-                        console.log(getCookie('my-cookie'));
+                        //  这里是让登录的
+                        this.a_setUserLogin(true);
                         window.location.href = '/'
                     } else {
                         console.log('error submit!!');
@@ -62,7 +65,8 @@
             resetForm(formName) {
                 this.$refs[formName].resetFields();
 
-            }
+            },
+            ...mapActions('UserInfoModule', ['a_setUserLogin'])
         }
     }
 </script>

@@ -5,7 +5,7 @@
             <div v-text="JSON.stringify(data)"></div>
         </el-row>
         <el-row>
-            <el-button @click="incrementIfOddOnRootSum(10)">增加10</el-button>
+            <el-button @click="a_increment(10)">增加10</el-button>
             <el-button @click="abc(1000)">abcclick</el-button>
             <p v-text="getCount"></p>
             <hr>
@@ -14,19 +14,13 @@
     </div>
 </template>
 <script>
-    //  工具包了里的方法
-    import {vueMethods, toJSON} from "@aliasAssets/js/utils";
-
-    console.log(vueMethods);
+    //  工具包里的方法
+    import {goBack} from "@aliasAssets/js/utils";
     import {
-        //  vuex暴露的mapState，用于处理computed
-        mapState,
         //  用于获取vuex里注册的组件的getter方法
         mapGetters,
         //  方法的handle
         mapActions,
-        //  直接暴露方法了,不要这样
-        mapMutations,
     } from 'vuex';
 
     export default {
@@ -34,8 +28,7 @@
         //  路由前守卫
         beforeRouteEnter(to, from, next) {
             console.log('beforeRouteEnter', to.fullPath);
-            console.log(to.params.userid);
-            next();
+            next(vm => vm.g_isUserLogin);
         },
         //  路由更新守卫
         beforeRouteUpdate(to, from, next) {
@@ -44,7 +37,7 @@
         },
         computed: {
             //  计算属性的模块化写法  UserInfoModule是模块命名空间
-            ...mapGetters("UserInfoModule", ['getCount', 'doubleVal'])
+            ...mapGetters("UserInfoModule", ['getCount', 'doubleVal', 'g_isUserLogin'])
 
         },
         data: () => ({
@@ -57,10 +50,10 @@
             this.data = this.$route.params;
         },
         methods: {
-            ...vueMethods,
-            ...mapActions('UserInfoModule', ['incrementIfOddOnRootSum']),
+            ...{goBack},
+            ...mapActions('UserInfoModule', ['a_increment']),
             abc(params) {
-                console.log(this.$store.dispatch('UserInfoModule/incrementIfOddOnRootSum', params));
+                console.log(this.$store.dispatch('UserInfoModule/a_increment', params));
             }
         }
     }

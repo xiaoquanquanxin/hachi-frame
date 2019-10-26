@@ -45,28 +45,39 @@ function toJSON(data) {
     return JSON.parse(JSON.stringify(data));
 }
 
+
+/**
+ * 判断登录，仅返回登录状态，true、false
+ * @return:boolean
+ * */
+function isUserLogin() {
+    return !!(sessionStorage.getItem('user_info') && sessionStorage.getItem('user_token'));
+}
+
+/**
+ * 设置登录状态
+ * **/
+function setUserLogin() {
+    sessionStorage.setItem('user_info', '1');
+    sessionStorage.setItem('user_token', '1');
+    addCookie('user_login', '1', 86400000);
+}
+
+
 /**
  * vue的方法
  * */
-// const vueMethods = (function (fn, w) {
-//     return fn(w)
-// }(function (w) {
-//     return {
-//
-//     }
-// }, window));
-const vueMethods = {
-    goBack() {
-        window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
-    },
-    treeShakingTestFn() {
-        console.log('treeShakingTestFn');
-    }
-};
+//  返回前一页
+function goBack(returnNo) {
+    window.history.length > 1 ? this.$router.go(returnNo || -1) : this.$router.push('/');
+}
+
 export {
     getCookie,
     addCookie,
     removeCookie,
     toJSON,
-    vueMethods
+    goBack,
+    setUserLogin,
+    isUserLogin,
 }
