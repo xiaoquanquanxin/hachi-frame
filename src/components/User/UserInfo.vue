@@ -14,6 +14,7 @@
     </div>
 </template>
 <script>
+    console.log('这是userinfo，看是同步还是异步');
     //  工具包里的方法
     import {goBack} from "@aliasAssets/js/utils";
     import {
@@ -28,30 +29,45 @@
         //  路由前守卫
         beforeRouteEnter(to, from, next) {
             console.log('beforeRouteEnter', to.fullPath);
-            next(vm => vm.g_isUserLogin);
+            next(vm => {
+                vm.getData();
+            });
         },
-        //  路由更新守卫
+        //  路由更新、复用守卫
         beforeRouteUpdate(to, from, next) {
             console.log('beforeRouteUpdate', to.fullPath);
-            next();
+            console.log(next);
+            this.getData(() => next);
         },
         computed: {
             //  计算属性的模块化写法  UserInfoModule是模块命名空间
-            ...mapGetters("UserInfoModule", ['getCount', 'doubleVal', 'g_isUserLogin'])
-
+            ...mapGetters("UserInfoModule", ['getCount', 'doubleVal', 'g_isUserLogin']),
         },
         data: () => ({
             data: null,
         }),
         props: ['customQueryName', 'customParams'],
-        created() {
-            console.log('customQueryName', this.customQueryName);
-            console.log('customParams', this.customParams);
-            this.data = this.$route.params;
-        },
         methods: {
             ...{goBack},
             ...mapActions('UserInfoModule', ['a_increment']),
+            getData(callback = function () {
+            }) {
+                new Promise((resolve, rejected) => {
+                    setTimeout(() => {
+                        resolve(`请求回来的数据是${Math.random()}`);
+                    }, 1000);
+                }).then(v => {
+                    this.data = {
+                        customQueryName: this.customQueryName,
+                        customParams: this.customParams,
+                        g_isUserLogin: this.g_isUserLogin,
+                        resultData: v,
+                    };
+                    return v;
+                }).then(v => {
+                    callback(v)
+                });
+            },
             abc(params) {
                 console.log(this.$store.dispatch('UserInfoModule/a_increment', params));
             }
