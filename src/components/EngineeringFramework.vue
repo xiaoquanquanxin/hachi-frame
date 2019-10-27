@@ -9,9 +9,10 @@
                     <router-view name="aside"></router-view>
                 </el-aside>
                 <!-- 路由匹配到的组件将渲染在这里 -->
-
                 <el-main id="main">
-                    <router-view></router-view>
+                    <transition name="slide-fade">
+                        <router-view></router-view>
+                    </transition>
                 </el-main>
             </el-container>
             <el-footer id="footer">脚部发发发</el-footer>
@@ -102,4 +103,15 @@
         height: 60px;
     }
 
+
+    /* 可以设置不同的进入和离开动画 */
+    /* 设置持续时间和动画函数 */
+    .slide-fade-enter-active {
+        /*transition: all .3s ease;*/
+        transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+
+    .slide-fade-enter, .slide-fade-leave-to, .slide-fade-leave-active {
+        opacity: 0;
+    }
 </style>

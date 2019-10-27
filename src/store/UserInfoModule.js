@@ -16,10 +16,6 @@ const UserInfoModule = (() => {
             // 这里的 `state` 对象是模块的局部状态
             state.count += step || 1;
         },
-        // //  用户登录、退出的实际方法
-        // m_setUserLogin(state, status) {
-        //     state.isUserLogin = status;
-        // }
     };
     //  们可以在 action 内部执行异步操作
     const actions = {

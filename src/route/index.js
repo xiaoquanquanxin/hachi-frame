@@ -10,10 +10,10 @@ import {isUserLogin} from '@aliasAssets/js/utils.js';
 import Login from '@aliasComponents/Login/Login.vue';
 
 //  用户模块
-import User from '@aliasComponents/User/User.vue'
-import UserInfo from '@aliasComponents/User/UserInfo.vue';
-import UserList from '@aliasComponents/User/UserList.vue';
-import UserHome from '@aliasComponents/User/UserHome.vue';
+const User = () => import(/* webpackChunkName: "async-user" */  '@aliasComponents/User/User.vue');
+const UserInfo = () => import(/* webpackChunkName: "async-userinfo" */ '@aliasComponents/User/UserInfo.vue');
+const UserList = () => import(/* webpackChunkName: "async-userlist" */ '@aliasComponents/User/UserList.vue');
+const UserHome = () => import(/* webpackChunkName: "async-userhome" */ '@aliasComponents/User/UserHome.vue');
 
 import AAA from "@aliasComponents/AAA.vue";
 //  左面菜单栏
@@ -22,8 +22,8 @@ import Aside from "@aliasComponents/Aside/Aside.vue";
 //  编辑登录信息
 import EditLogin from '@aliasComponents/Login/EditLogin.vue';
 
-//  历史记录
-import HistoryModule from '@aliasComponents/EXAMPLE/HistoryModule/HistoryModule.vue';
+//  历史记录,这是一个异步组件
+const HistoryModule = () => import('@aliasComponents/EXAMPLE/HistoryModule/HistoryModule.vue');
 
 Vue.use(Router);
 const router = new Router({
@@ -71,12 +71,13 @@ const router = new Router({
                     path: 'userinfo',
                     component: UserInfo,
                     name: '某一个人的用户信息，传了个userid',
+                    //  元信息，这里是需要登录
                     meta: {requiresAuth: true},
                     props: (route) => {
                         return {customQueryName: route.query.userid, customParams: 123};
                     },
                     beforeEnter: (to, from, next) => {
-                        console.log(to)
+                        // console.log(to)
 
                         //  这个路由是admin特权查看的，别人进不来
                         //  这里最好校验session
@@ -119,6 +120,7 @@ const router = new Router({
             },
         },
 
+
         {
             path: '*',
             redirect: '/',
@@ -128,7 +130,7 @@ const router = new Router({
                 aside: Aside,
             },
         }
-    ]
+    ],
 });
 
 
