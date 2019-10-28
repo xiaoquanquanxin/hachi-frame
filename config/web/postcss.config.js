@@ -1,4 +1,4 @@
-const __src = '../src/web';
+const __src = '../../src/web';
 const {resolve} = require('path');
 console.log('加载了postcss🍊🍊🍊🍊🍊🍊🍊🍊');
 const postCssConfig = {
