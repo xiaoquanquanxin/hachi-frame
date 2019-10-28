@@ -52,10 +52,15 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        console.log('登录成功');
-                        //  这里是让登录的
-                        this.a_setUserLogin(true);
-                        window.location.href = '/'
+                        this.$http.get('/api/userLogin').then(response => {
+                            // get body data
+                            console.log(response.body);
+                            //  这里是让登录的
+                            this.a_setUserLogin(true);
+                            window.location.href = '/'
+                        }, response => {
+                            console.log(response);
+                        });
                     } else {
                         console.log('error submit!!');
                         return false;
@@ -64,7 +69,6 @@
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
-
             },
             ...mapActions('UserInfoModule', ['a_setUserLogin'])
         }
