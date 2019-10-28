@@ -13,8 +13,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const AppLoadingPage = require('./customPlugins/AppLoadingPage');
 
 //  src的位置
-const __src = '../src';
-const __dist = '../dist';
+const __src = '../src/web';
+const __dist = '../dist/web';
 //  public路径
 const publicPath = '/';
 
@@ -112,7 +112,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: `index.html`,      //  达成的包，最后在/page下
-            template: resolve(__dirname, '../src/index.html'),                     //  模板来自于/template
+            template: resolve(__dirname, __src, 'index.html'),                     //  模板来自于/template
             title: '欢迎使用hachi IOT',
             style: AppLoadingPage.styleString,
             appLoading: AppLoadingPage.htmlString,
