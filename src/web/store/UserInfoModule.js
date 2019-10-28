@@ -24,7 +24,7 @@ const UserInfoModule = (() => {
         },
         //  用户登录、退出的触发方法
         a_setUserLogin({state, commit, rootState}, status) {
-            setUserLogin(true);
+            setUserLogin(status);
         }
     };
     const getters = {
