@@ -13,8 +13,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const AppLoadingPage = require('./customPlugins/AppLoadingPage');
 
 //  src的位置
-const __src = '../src/web';
-const __dist = '../dist/web';
+const __src = '../../src/web';
+const __dist = '../../dist/web';
 //  public路径
 const publicPath = '/';
 
