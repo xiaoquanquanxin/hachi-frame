@@ -9,6 +9,8 @@ import router from './route/index';
 // import elementUI from 'element-ui'
 // Vue.use(elementUI);
 Vue.use("eui");
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
 
 //  为ie配置vuex兼容
 import 'babel-polyfill';
