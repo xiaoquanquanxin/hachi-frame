@@ -134,6 +134,8 @@ const router = new Router({
 });
 
 
+import store from '../store';
+
 //  如果用户没有登录，而点击其他页，则走了两次路由守卫
 router.beforeEach((to, from, next) => {
     console.log('主守卫被调用');
@@ -145,7 +147,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         console.log(`需要验证登录的path : ${to.fullPath}`);
         //  用户没有登录
-        if (!isUserLogin()) {
+        if (!store.state.UserInfoModule.isUserLogin) {
             //  用户没登录，就跳转到登录页
             router.push({path: '/login'});
             return;

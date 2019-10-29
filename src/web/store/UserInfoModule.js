@@ -8,6 +8,7 @@ const UserInfoModule = (() => {
     const state = () => {
         return {
             count: 87,
+            isUserLogin: isUserLogin(),
         }
     };
     // 同步修改状态（同步改变state状态）,必须是同步的因为要记录更新的状态，只有真正更新了，才能获得更新后的状态
@@ -36,9 +37,7 @@ const UserInfoModule = (() => {
             return state.count * 2 + '这就是一个小的computed';
         },
         g_isUserLogin(state) {
-            const bool = isUserLogin();
-            console.log('是否登录了', bool);
-            return bool;
+            return state.isUserLogin;
         }
     };
     return {
