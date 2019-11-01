@@ -6,3 +6,9 @@
 
 
 ####    3.log记录、bug汇总
+
+
+####    4.安全性
+[secure.md](secure.md)
+
+

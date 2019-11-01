@@ -21,7 +21,7 @@ const styleString = `<style>
 //  html
 const htmlString = `<div id="appLoading">
         <span>
-            <img id="loading" src="http://192.168.50.159:8081/images/loading_a.gif" alt="logo">
+            <img id="loading" src="/images/loading_a.gif" alt="logo">
         </span>
     </div>`;
 module.exports = {
