@@ -1,5 +1,5 @@
 //  style
-const styleString = `<style>
+const StyleString = `<style>
         #appLoading {
             width: 100%;
             height: 100%;
@@ -18,13 +18,19 @@ const styleString = `<style>
             transform: translateY(-50%) translateX(-50%);
         }
     </style>`;
+
+//  staticLocation
+const StaticLocation = 'http://192.168.50.17:8081';
 //  html
-const htmlString = `<div id="appLoading">
+const HtmlString = `<div id="appLoading">
         <span>
-            <img id="loading" src="/images/loading_a.gif" alt="logo">
+            <img id="loading" src="${StaticLocation}/images/loading_a.gif" alt="logo">
         </span>
-    </div>`;
+    </div>
+<script src="${StaticLocation}/js/vue.min.js"></script>
+<script src="${StaticLocation}/js/element-ui.js"></script>
+`;
 module.exports = {
-    styleString,
-    htmlString,
+    StyleString,
+    HtmlString,
 };
