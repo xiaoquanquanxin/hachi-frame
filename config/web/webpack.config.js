@@ -114,8 +114,8 @@ module.exports = {
             filename: `index.html`,      //  达成的包，最后在/page下
             template: resolve(__dirname, __src, 'index.html'),                     //  模板来自于/template
             title: '欢迎使用hachi IOT',
-            style: AppLoadingPage.styleString,
-            appLoading: AppLoadingPage.htmlString,
+            style: AppLoadingPage.StyleString,
+            appLoading: AppLoadingPage.HtmlString,
         }),
 
         new VueLoaderPlugin({}),
