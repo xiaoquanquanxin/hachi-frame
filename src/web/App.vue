@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <EngineeringFramework/>
+        1
     </div>
 </template>
 <script>
