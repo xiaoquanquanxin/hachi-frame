@@ -4,6 +4,7 @@
             <el-header>Header</el-header>
             <el-container>
                 <el-aside width="200px">我是AAA</el-aside>
+                <el-aside width="200px">我是AAA</el-aside>
                 <el-main>Main</el-main>
             </el-container>
             <el-footer>Footer</el-footer>
