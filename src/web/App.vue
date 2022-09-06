@@ -7,6 +7,7 @@
 <script>
     import EngineeringFramework from './components/EngineeringFramework.vue';
 
+    console.log('dev-01')
     export default {
         name: 'app',
         data: () => ({}),
